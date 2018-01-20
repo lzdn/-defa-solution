@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defa.data.center.ProductDetailMapper">
+  <resultMap id="BaseResultMap" type="com.defa.model.center.ProductDetail">
+    <id column="product_detail_id" jdbcType="INTEGER" property="productDetailId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="product_place" jdbcType="VARCHAR" property="productPlace" />
+    <result column="produce_date" jdbcType="TIMESTAMP" property="produceDate" />
+    <result column="product_period" jdbcType="INTEGER" property="productPeriod" />
+    <result column="selling_mode" jdbcType="INTEGER" property="sellingMode" />
+    <result column="storage_mode" jdbcType="INTEGER" property="storageMode" />
+    <result column="raw_material" jdbcType="VARCHAR" property="rawMaterial" />
+    <result column="enter_port" jdbcType="INTEGER" property="enterPort" />
+    <result column="is_specialty" jdbcType="INTEGER" property="isSpecialty" />
+    <result column="licence_no" jdbcType="VARCHAR" property="licenceNo" />
+    <result column="hygiene_no" jdbcType="VARCHAR" property="hygieneNo" />
+    <result column="criterion_no" jdbcType="VARCHAR" property="criterionNo" />
+    <result column="bar_code" jdbcType="VARCHAR" property="barCode" />
+    <result column="unit_weight" jdbcType="DOUBLE" property="unitWeight" />
+    <result column="unit_net_weight" jdbcType="DOUBLE" property="unitNetWeight" />
+    <result column="unit_code" jdbcType="INTEGER" property="unitCode" />
+    <result column="unit_num" jdbcType="INTEGER" property="unitNum" />
+    <result column="total_weight" jdbcType="DOUBLE" property="totalWeight" />
+    <result column="total_net_weight" jdbcType="DOUBLE" property="totalNetWeight" />
+    <result column="total_num" jdbcType="INTEGER" property="totalNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_detail_id, product_id, product_place, produce_date, product_period, selling_mode, 
+    storage_mode, raw_material, enter_port, is_specialty, licence_no, hygiene_no, criterion_no, 
+    bar_code, unit_weight, unit_net_weight, unit_code, unit_num, total_weight, total_net_weight, 
+    total_num
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_product_detail
+    where product_detail_id = #{productDetailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_product_detail
+    where product_detail_id = #{productDetailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.defa.model.center.ProductDetail">
+    insert into t_product_detail (product_detail_id, product_id, product_place, 
+      produce_date, product_period, selling_mode, 
+      storage_mode, raw_material, enter_port, 
+      is_specialty, licence_no, hygiene_no, 
+      criterion_no, bar_code, unit_weight, 
+      unit_net_weight, unit_code, unit_num, 
+      total_weight, total_net_weight, total_num
+      )
+    values (#{productDetailId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{productPlace,jdbcType=VARCHAR}, 
+      #{produceDate,jdbcType=TIMESTAMP}, #{productPeriod,jdbcType=INTEGER}, #{sellingMode,jdbcType=INTEGER}, 
+      #{storageMode,jdbcType=INTEGER}, #{rawMaterial,jdbcType=VARCHAR}, #{enterPort,jdbcType=INTEGER}, 
+      #{isSpecialty,jdbcType=INTEGER}, #{licenceNo,jdbcType=VARCHAR}, #{hygieneNo,jdbcType=VARCHAR}, 
+      #{criterionNo,jdbcType=VARCHAR}, #{barCode,jdbcType=VARCHAR}, #{unitWeight,jdbcType=DOUBLE}, 
+      #{unitNetWeight,jdbcType=DOUBLE}, #{unitCode,jdbcType=INTEGER}, #{unitNum,jdbcType=INTEGER}, 
+      #{totalWeight,jdbcType=DOUBLE}, #{totalNetWeight,jdbcType=DOUBLE}, #{totalNum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.defa.model.center.ProductDetail">
+    insert into t_product_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productDetailId != null">
+        product_detail_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productPlace != null">
+        product_place,
+      </if>
+      <if test="produceDate != null">
+        produce_date,
+      </if>
+      <if test="productPeriod != null">
+        product_period,
+      </if>
+      <if test="sellingMode != null">
+        selling_mode,
+      </if>
+      <if test="storageMode != null">
+        storage_mode,
+      </if>
+      <if test="rawMaterial != null">
+        raw_material,
+      </if>
+      <if test="enterPort != null">
+        enter_port,
+      </if>
+      <if test="isSpecialty != null">
+        is_specialty,
+      </if>
+      <if test="licenceNo != null">
+        licence_no,
+      </if>
+      <if test="hygieneNo != null">
+        hygiene_no,
+      </if>
+      <if test="criterionNo != null">
+        criterion_no,
+      </if>
+      <if test="barCode != null">
+        bar_code,
+      </if>
+      <if test="unitWeight != null">
+        unit_weight,
+      </if>
+      <if test="unitNetWeight != null">
+        unit_net_weight,
+      </if>
+      <if test="unitCode != null">
+        unit_code,
+      </if>
+      <if test="unitNum != null">
+        unit_num,
+      </if>
+      <if test="totalWeight != null">
+        total_weight,
+      </if>
+      <if test="totalNetWeight != null">
+        total_net_weight,
+      </if>
+      <if test="totalNum != null">
+        total_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productDetailId != null">
+        #{productDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productPlace != null">
+        #{productPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="produceDate != null">
+        #{produceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productPeriod != null">
+        #{productPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="sellingMode != null">
+        #{sellingMode,jdbcType=INTEGER},
+      </if>
+      <if test="storageMode != null">
+        #{storageMode,jdbcType=INTEGER},
+      </if>
+      <if test="rawMaterial != null">
+        #{rawMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="enterPort != null">
+        #{enterPort,jdbcType=INTEGER},
+      </if>
+      <if test="isSpecialty != null">
+        #{isSpecialty,jdbcType=INTEGER},
+      </if>
+      <if test="licenceNo != null">
+        #{licenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hygieneNo != null">
+        #{hygieneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="criterionNo != null">
+        #{criterionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="barCode != null">
+        #{barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="unitWeight != null">
+        #{unitWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="unitNetWeight != null">
+        #{unitNetWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="unitCode != null">
+        #{unitCode,jdbcType=INTEGER},
+      </if>
+      <if test="unitNum != null">
+        #{unitNum,jdbcType=INTEGER},
+      </if>
+      <if test="totalWeight != null">
+        #{totalWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="totalNetWeight != null">
+        #{totalNetWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="totalNum != null">
+        #{totalNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.defa.model.center.ProductDetail">
+    update t_product_detail
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productPlace != null">
+        product_place = #{productPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="produceDate != null">
+        produce_date = #{produceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productPeriod != null">
+        product_period = #{productPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="sellingMode != null">
+        selling_mode = #{sellingMode,jdbcType=INTEGER},
+      </if>
+      <if test="storageMode != null">
+        storage_mode = #{storageMode,jdbcType=INTEGER},
+      </if>
+      <if test="rawMaterial != null">
+        raw_material = #{rawMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="enterPort != null">
+        enter_port = #{enterPort,jdbcType=INTEGER},
+      </if>
+      <if test="isSpecialty != null">
+        is_specialty = #{isSpecialty,jdbcType=INTEGER},
+      </if>
+      <if test="licenceNo != null">
+        licence_no = #{licenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hygieneNo != null">
+        hygiene_no = #{hygieneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="criterionNo != null">
+        criterion_no = #{criterionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="barCode != null">
+        bar_code = #{barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="unitWeight != null">
+        unit_weight = #{unitWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="unitNetWeight != null">
+        unit_net_weight = #{unitNetWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="unitCode != null">
+        unit_code = #{unitCode,jdbcType=INTEGER},
+      </if>
+      <if test="unitNum != null">
+        unit_num = #{unitNum,jdbcType=INTEGER},
+      </if>
+      <if test="totalWeight != null">
+        total_weight = #{totalWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="totalNetWeight != null">
+        total_net_weight = #{totalNetWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="totalNum != null">
+        total_num = #{totalNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where product_detail_id = #{productDetailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.defa.model.center.ProductDetail">
+    update t_product_detail
+    set product_id = #{productId,jdbcType=INTEGER},
+      product_place = #{productPlace,jdbcType=VARCHAR},
+      produce_date = #{produceDate,jdbcType=TIMESTAMP},
+      product_period = #{productPeriod,jdbcType=INTEGER},
+      selling_mode = #{sellingMode,jdbcType=INTEGER},
+      storage_mode = #{storageMode,jdbcType=INTEGER},
+      raw_material = #{rawMaterial,jdbcType=VARCHAR},
+      enter_port = #{enterPort,jdbcType=INTEGER},
+      is_specialty = #{isSpecialty,jdbcType=INTEGER},
+      licence_no = #{licenceNo,jdbcType=VARCHAR},
+      hygiene_no = #{hygieneNo,jdbcType=VARCHAR},
+      criterion_no = #{criterionNo,jdbcType=VARCHAR},
+      bar_code = #{barCode,jdbcType=VARCHAR},
+      unit_weight = #{unitWeight,jdbcType=DOUBLE},
+      unit_net_weight = #{unitNetWeight,jdbcType=DOUBLE},
+      unit_code = #{unitCode,jdbcType=INTEGER},
+      unit_num = #{unitNum,jdbcType=INTEGER},
+      total_weight = #{totalWeight,jdbcType=DOUBLE},
+      total_net_weight = #{totalNetWeight,jdbcType=DOUBLE},
+      total_num = #{totalNum,jdbcType=INTEGER}
+    where product_detail_id = #{productDetailId,jdbcType=INTEGER}
+  </update>
+  
+   <select id="selectByProductId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_product_detail
+    where product_id = #{productId,jdbcType=INTEGER}
+  </select>
+</mapper>

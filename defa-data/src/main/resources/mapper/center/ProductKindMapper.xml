@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defa.data.center.ProductKindMapper">
+  <resultMap id="BaseResultMap" type="com.defa.model.center.ProductKind">
+    <id column="product_kind_id" jdbcType="INTEGER" property="productKindId" />
+    <result column="product_kind_name" jdbcType="VARCHAR" property="productKindName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_kind_id, product_kind_name, description, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_product_kind
+    where product_kind_id = #{productKindId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_product_kind
+    where product_kind_id = #{productKindId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.defa.model.center.ProductKind">
+    insert into t_product_kind (product_kind_id, product_kind_name, description, 
+      status)
+    values (#{productKindId,jdbcType=INTEGER}, #{productKindName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.defa.model.center.ProductKind">
+    insert into t_product_kind
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productKindId != null">
+        product_kind_id,
+      </if>
+      <if test="productKindName != null">
+        product_kind_name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productKindId != null">
+        #{productKindId,jdbcType=INTEGER},
+      </if>
+      <if test="productKindName != null">
+        #{productKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.defa.model.center.ProductKind">
+    update t_product_kind
+    <set>
+      <if test="productKindName != null">
+        product_kind_name = #{productKindName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where product_kind_id = #{productKindId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.defa.model.center.ProductKind">
+    update t_product_kind
+    set product_kind_name = #{productKindName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where product_kind_id = #{productKindId,jdbcType=INTEGER}
+  </update>
+   <select id="findPage" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_product_kind
+  </select>
+  <select id="findAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_product_kind
+  </select>
+</mapper>

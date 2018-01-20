@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defa.data.core.RoleRightRelationMapper">
+  <resultMap id="BaseResultMap" type="com.defa.model.core.RoleRightRelationKey">
+    <id column="role_id" jdbcType="INTEGER" property="roleId" />
+    <id column="right_id" jdbcType="INTEGER" property="rightId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.defa.model.core.RoleRightRelationKey">
+    delete from t_role_right_relation
+    where role_id = #{roleId,jdbcType=INTEGER}
+      and right_id = #{rightId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.defa.model.core.RoleRightRelationKey">
+    insert into t_role_right_relation (role_id, right_id)
+    values (#{roleId,jdbcType=INTEGER}, #{rightId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.defa.model.core.RoleRightRelationKey">
+    insert into t_role_right_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="rightId != null">
+        right_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="rightId != null">
+        #{rightId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteByRoleId" parameterType="java.lang.Integer">
+    delete from t_role_right_relation
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insertBatch" useGeneratedKeys="true" parameterType="java.util.List">  
+		insert into t_role_right_relation (role_id, right_id)
+		values  
+		<foreach collection="list" item="item" index="index" separator="," >  
+			(#{item.roleId}, #{item.rightId})
+		</foreach>  
+	</insert>
+  
+</mapper>

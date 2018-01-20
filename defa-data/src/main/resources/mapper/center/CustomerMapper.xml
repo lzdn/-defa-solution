@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defa.data.center.CustomerMapper">
+  <resultMap id="BaseResultMap" type="com.defa.model.center.Customer">
+    <id column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="customer_pwd" jdbcType="VARCHAR" property="customerPwd" />
+    <result column="customer_phone" jdbcType="VARCHAR" property="customerPhone" />
+    <result column="customer_email" jdbcType="VARCHAR" property="customerEmail" />
+    <result column="customer_address" jdbcType="VARCHAR" property="customerAddress" />
+    <result column="customer_zip_code" jdbcType="VARCHAR" property="customerZipCode" />
+    <result column="customer_webchat" jdbcType="VARCHAR" property="customerWebchat" />
+    <result column="customer_qq" jdbcType="VARCHAR" property="customerQq" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    customer_id, customer_name, customer_pwd, customer_phone, customer_email, customer_address, 
+    customer_zip_code, customer_webchat, customer_qq, status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_customer
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_customer
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.defa.model.center.Customer">
+    insert into t_customer (customer_id, customer_name, customer_pwd, 
+      customer_phone, customer_email, customer_address, 
+      customer_zip_code, customer_webchat, customer_qq, 
+      status, create_time, update_time
+      )
+    values (#{customerId,jdbcType=INTEGER}, #{customerName,jdbcType=VARCHAR}, #{customerPwd,jdbcType=VARCHAR}, 
+      #{customerPhone,jdbcType=VARCHAR}, #{customerEmail,jdbcType=VARCHAR}, #{customerAddress,jdbcType=VARCHAR}, 
+      #{customerZipCode,jdbcType=VARCHAR}, #{customerWebchat,jdbcType=VARCHAR}, #{customerQq,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.defa.model.center.Customer">
+    insert into t_customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="customerPwd != null">
+        customer_pwd,
+      </if>
+      <if test="customerPhone != null">
+        customer_phone,
+      </if>
+      <if test="customerEmail != null">
+        customer_email,
+      </if>
+      <if test="customerAddress != null">
+        customer_address,
+      </if>
+      <if test="customerZipCode != null">
+        customer_zip_code,
+      </if>
+      <if test="customerWebchat != null">
+        customer_webchat,
+      </if>
+      <if test="customerQq != null">
+        customer_qq,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPwd != null">
+        #{customerPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="customerEmail != null">
+        #{customerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAddress != null">
+        #{customerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="customerZipCode != null">
+        #{customerZipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerWebchat != null">
+        #{customerWebchat,jdbcType=VARCHAR},
+      </if>
+      <if test="customerQq != null">
+        #{customerQq,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.defa.model.center.Customer">
+    update t_customer
+    <set>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPwd != null">
+        customer_pwd = #{customerPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="customerEmail != null">
+        customer_email = #{customerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAddress != null">
+        customer_address = #{customerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="customerZipCode != null">
+        customer_zip_code = #{customerZipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerWebchat != null">
+        customer_webchat = #{customerWebchat,jdbcType=VARCHAR},
+      </if>
+      <if test="customerQq != null">
+        customer_qq = #{customerQq,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.defa.model.center.Customer">
+    update t_customer
+    set customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_pwd = #{customerPwd,jdbcType=VARCHAR},
+      customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      customer_email = #{customerEmail,jdbcType=VARCHAR},
+      customer_address = #{customerAddress,jdbcType=VARCHAR},
+      customer_zip_code = #{customerZipCode,jdbcType=VARCHAR},
+      customer_webchat = #{customerWebchat,jdbcType=VARCHAR},
+      customer_qq = #{customerQq,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defa.data.core.MenuGroupMapper">
+  <resultMap id="BaseResultMap" type="com.defa.model.core.MenuGroup">
+    <id column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="order_by" jdbcType="INTEGER" property="orderBy" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    group_id, icon, group_name, description, order_by, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_menu_group
+    where group_id = #{groupId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_menu_group
+    where group_id = #{groupId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.defa.model.core.MenuGroup">
+    insert into t_menu_group (group_id, icon, group_name, 
+      description, order_by, status
+      )
+    values (#{groupId,jdbcType=INTEGER}, #{icon,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{orderBy,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.defa.model.core.MenuGroup">
+    insert into t_menu_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="groupName != null">
+        group_name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="orderBy != null">
+        order_by,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="groupName != null">
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="orderBy != null">
+        #{orderBy,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.defa.model.core.MenuGroup">
+    update t_menu_group
+    <set>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="groupName != null">
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="orderBy != null">
+        order_by = #{orderBy,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where group_id = #{groupId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.defa.model.core.MenuGroup">
+    update t_menu_group
+    set icon = #{icon,jdbcType=VARCHAR},
+      group_name = #{groupName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      order_by = #{orderBy,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where group_id = #{groupId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="UserMenuGroupResult" extends="BaseResultMap" type="com.defa.model.core.MenuGroup" >
+		<collection property="menus" ofType="com.defa.model.core.Menu">
+		 	<id column="menu_id" jdbcType="INTEGER" property="menuId" />
+		    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+		    <result column="menu_code" jdbcType="VARCHAR" property="menuCode" />
+		    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+		    <!-- <result column="icon" jdbcType="VARCHAR" property="icon" /> -->
+		    <result column="url" jdbcType="VARCHAR" property="url" />
+		    <result column="order_by" jdbcType="INTEGER" property="orderBy" />
+		</collection>
+	</resultMap>
+  
+   <select id="getMenuGroupByUserId" parameterType="java.lang.Integer" resultMap="UserMenuGroupResult">
+  	select  mg.group_id, mg.group_name, mg.description,mg.order_by,mg.icon, m.menu_id,m.menu_code,m.menu_name,m.url
+	from t_menu_group mg 
+  	left join t_menu m on m.group_id = mg.group_id
+  	left join t_right r on r.menu_id = m.menu_id
+  	left join t_role_right_relation rrr on rrr.right_id = r.right_id
+  	left join t_role re on re.role_id = rrr.role_id
+  	left join t_user_role_relation urr on urr.role_id = re.role_id
+  	left join t_user u on u.user_id = urr.user_id
+  	where u.user_id = #{userId,jdbcType=INTEGER}
+  	order by mg.order_by,m.order_by
+  </select>
+  
+   <select id="findAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_menu_group
+  </select>
+  
+  <select id="findPage" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_menu_group
+  </select>
+  
+   <resultMap id="MenuGroupRightResult" extends="BaseResultMap" type="com.defa.model.core.MenuGroup" >
+		<collection property="menus" ofType="com.defa.model.core.Menu">
+		 	<id column="menu_id" jdbcType="INTEGER" property="menuId" />
+		    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+		    <association property="right" javaType="com.defa.model.core.Right">  
+				<id column="right_id" jdbcType="INTEGER" property="rightId" />
+			    <result column="right_name" jdbcType="VARCHAR" property="rightName" />
+			    <result column="checked" jdbcType="INTEGER" property="checked" />
+			</association>
+		</collection>
+	</resultMap>
+   <select id="findMenuGroupRights" parameterType="Map" resultMap="MenuGroupRightResult">
+		SELECT  tmg.group_id,tmg.group_name,tm.menu_id,tm.menu_name,tr.right_id,tr.right_name,trr.right_id as checked
+	  	from t_menu_group tmg
+	  	LEFT JOIN t_menu tm on tm.group_id=tmg.group_id
+	  	LEFT JOIN  t_right tr on tr.menu_id = tm.menu_id
+	    LEFT JOIN  (SELECT  t.right_id from t_role_right_relation t where t.role_id = #{roleId,jdbcType=INTEGER}) trr on trr.right_id = tr.right_id
+  </select>
+  
+</mapper>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.defa.data.center.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.defa.model.center.Product">
+    <id column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="product_kind_id" jdbcType="INTEGER" property="productKindId" />
+    <result column="product_brand_id" jdbcType="INTEGER" property="productBrandId" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="channel_id" jdbcType="INTEGER" property="channelId" />
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="push_type" jdbcType="INTEGER" property="pushType" />
+    <result column="is_putaway" jdbcType="INTEGER" property="isPutaway" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_id, product_kind_id, product_brand_id, product_name, channel_id, image_url, 
+    price, stock, description, score, push_type, is_putaway, status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_product
+    where product_id = #{productId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_product
+    where product_id = #{productId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.defa.model.center.Product">
+    insert into t_product (product_id, product_kind_id, product_brand_id, 
+      product_name, channel_id, image_url, 
+      price, stock, description, 
+      score, push_type, is_putaway, 
+      status, create_time, update_time
+      )
+    values (#{productId,jdbcType=INTEGER}, #{productKindId,jdbcType=INTEGER}, #{productBrandId,jdbcType=INTEGER}, 
+      #{productName,jdbcType=VARCHAR}, #{channelId,jdbcType=INTEGER}, #{imageUrl,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{score,jdbcType=INTEGER}, #{pushType,jdbcType=INTEGER}, #{isPutaway,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.defa.model.center.Product">
+  	
+  	 <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="productId">
+          SELECT LAST_INSERT_ID()
+      </selectKey>
+  
+    insert into t_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productKindId != null">
+        product_kind_id,
+      </if>
+      <if test="productBrandId != null">
+        product_brand_id,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="imageUrl != null">
+        image_url,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="stock != null">
+        stock,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="pushType != null">
+        push_type,
+      </if>
+      <if test="isPutaway != null">
+        is_putaway,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productKindId != null">
+        #{productKindId,jdbcType=INTEGER},
+      </if>
+      <if test="productBrandId != null">
+        #{productBrandId,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=INTEGER},
+      </if>
+      <if test="imageUrl != null">
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="pushType != null">
+        #{pushType,jdbcType=INTEGER},
+      </if>
+      <if test="isPutaway != null">
+        #{isPutaway,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.defa.model.center.Product">
+    update t_product
+    <set>
+      <if test="productKindId != null">
+        product_kind_id = #{productKindId,jdbcType=INTEGER},
+      </if>
+      <if test="productBrandId != null">
+        product_brand_id = #{productBrandId,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null">
+        channel_id = #{channelId,jdbcType=INTEGER},
+      </if>
+      <if test="imageUrl != null">
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="stock != null">
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="pushType != null">
+        push_type = #{pushType,jdbcType=INTEGER},
+      </if>
+      <if test="isPutaway != null">
+        is_putaway = #{isPutaway,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.defa.model.center.Product">
+    update t_product
+    set product_kind_id = #{productKindId,jdbcType=INTEGER},
+      product_brand_id = #{productBrandId,jdbcType=INTEGER},
+      product_name = #{productName,jdbcType=VARCHAR},
+      channel_id = #{channelId,jdbcType=INTEGER},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      stock = #{stock,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      score = #{score,jdbcType=INTEGER},
+      push_type = #{pushType,jdbcType=INTEGER},
+      is_putaway = #{isPutaway,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+    <select id="findPage" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_product
+  </select>
+  <select id="findAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_product
+  </select>
+  <select id="selectProductByMap"  parameterType="Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_product 
+    <where>
+	    <if test="pushType != null">
+	        and push_type = #{pushType,jdbcType=INTEGER}
+	     </if>
+    </where>
+  </select>
+</mapper>

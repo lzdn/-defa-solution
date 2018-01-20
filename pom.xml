@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.defa</groupId>
+    <artifactId>defa-solution</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    
+   <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.7.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	
+    <modules>
+	    <module>defa-model</module>
+	    
+	    
+	    <module>defa-data</module>
+	    <module>defa-manage</module>
+	    <module>defa-utils</module>
+	    <module>defa-job</module>
+	    <module>defa-webchat</module>
+	    <module>defa-shop</module>
+	    <module>defa-website</module>
+	    <module>defa-inote</module>
+	    <module>defa-service</module>
+	    
+	    <module>defa-iservice</module>
+    </modules>
+</project>
