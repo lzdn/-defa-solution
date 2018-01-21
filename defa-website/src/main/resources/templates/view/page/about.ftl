@@ -32,14 +32,13 @@
 
 				<h5>联系方式</h5>
 				<address>
-		      	广东省东莞市大岭山镇107国道连平段信立国际农贸城 酒店特色食品区横三路39号<br>
-		      <abbr title="Phone">电话:</abbr>18321147670<br>
-		    </address>
+			      	湖南长沙市雨花区高桥新太平街七区A1栋6号<br>
+			      	<abbr title="Phone">电话:</abbr>15675829729<br>
+		    		</address>
+		    		<h5>电子邮箱</h5>
 				<address>
-	      <h5>电子邮箱</h5>
-		      <a href="mailto:415656544@qq.com">415656544@qq.com</a><br>
-		      <a href="mailto:1660766588@qq.com">1660766588@qq.com</a>
-	    	</address>
+		      		<a href="mailto:249405271@qq.com">249405271@qq.com</a><br>
+	    			</address>
 				<h5>微信公众号</h5>
 				<img src="${basePath}/static/img/erwm.jpg">
 			</div>

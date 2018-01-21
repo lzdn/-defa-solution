@@ -56,8 +56,8 @@
       <div class="col-md-9 col-sm-8">
         <h2>店长推荐</h2>
         <div class="owl-carousel owl-carousel3">
-    		<#if hotProductList??&&hotProductList?size gt 0>
-    		<#list hotProductList as product>
+    		<#if dzProductList??&&dzProductList?size gt 0>
+    		<#list dzProductList as product>
     			<#if product_index lt 3>
 		          <div>
 		            <div class="product-item">
@@ -88,8 +88,8 @@
       <div class="col-md-6 two-items-bottom-items">
         <h2>经典</h2>
         <div class="owl-carousel owl-carousel2">
-        	<#if dzProductList??&&dzProductList?size gt 0>
-    		<#list dzProductList as product>
+        	<#if oldProductList??&&oldProductList?size gt 0>
+    		<#list oldProductList as product>
     			<#if product_index lt 2>
           <div>
             <div class="product-item">

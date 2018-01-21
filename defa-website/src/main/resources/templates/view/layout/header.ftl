@@ -5,7 +5,7 @@
                 <!-- BEGIN TOP BAR LEFT PART -->
                 <div class="col-md-6 col-sm-6 additional-shop-info">
                     <ul class="list-unstyled list-inline">
-                        <li>联系电话：<i class="fa fa-phone"></i><span>+021 89744657</span></li>
+                        <li>联系电话：<i class="fa fa-phone"></i><span>15675829729</span></li>
                     </ul>
                 </div>
                 <!-- END TOP BAR LEFT PART -->
@@ -173,7 +173,7 @@
               <div class="search-box">
                 <form action="#">
                   <div class="input-group">
-                    <input type="text" placeholder="请输入" class="form-control">
+                    <input type="text" placeholder="请输入产品名称" class="form-control">
                     <span class="input-group-btn">
                       <button class="btn btn-primary" type="submit">搜索</button>
                     </span>

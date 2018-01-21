@@ -37,11 +37,13 @@
           <!-- BEGIN BOTTOM ABOUT BLOCK -->
           <div class="col-md-3 col-sm-6 pre-footer-col">
             <h2>关于德发</h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo consequat. </p>
-            <p>Duis autem vel eum iriure dolor vulputate velit esse molestie at dolore.</p>
+            <p>德发酒店特色食材商行坐落于著名的楚汉名城、屈贾之乡、伟人故里---湖南长沙，公司成立2010年，
+            以“德发、潇湘风味”为核心品牌，是一家从事酒店特色菜原料生产、酒店配送，品牌代理、湘厨代聘的专业湘菜供应链型公司，公司本着诚信为本，以顾客需求为导向的经营理念立足于全国市场。</p>
+            <p></p>
           </div>
           <!-- END BOTTOM ABOUT BLOCK -->
           <!-- BEGIN BOTTOM INFO BLOCK -->
+         
           <div class="col-md-3 col-sm-6 pre-footer-col">
             <h2>合作伙伴</h2>
             <ul class="list-unstyled">
@@ -54,19 +56,17 @@
               <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Payment Methods</a></li>
             </ul>
           </div>
+           
           <!-- END INFO BLOCK -->
 
           <!-- BEGIN TWITTER BLOCK --> 
           <div class="col-md-3 col-sm-6 pre-footer-col">
             <h2 >网站导航</h2>
              <ul class="list-unstyled">
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Delivery Information</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Customer Service</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Order Tracking</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Shipping &amp; Returns</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="#">Contact Us</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Careers</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Payment Methods</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">网站首页</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">产品搜索</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">新闻动态</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">关于德发</a></li>
             </ul>
           </div>
           <!-- END TWITTER BLOCK -->
@@ -75,12 +75,14 @@
           <div class="col-md-3 col-sm-6 pre-footer-col">
             <h2>联系我们</h2>
             <address class="margin-bottom-40">
-              35, Lorem Lis Street, Park Ave<br>
-              California, US<br>
-              Phone: 300 323 3456<br>
-              Fax: 300 323 1456<br>
-              Email: <a href="mailto:info@metronic.com">info@metronic.com</a><br>
-              Skype: <a href="skype:metronic">metronic</a>
+              <!-- <br> -->
+              湖南长沙市雨花区高桥新太平街七区A1栋6号<br>
+              电话: 15675829729<br>
+              传真: 300 323 1456<br>
+              QQ: 249405271<br>
+              微信: zlnews1687<br>
+              邮箱: <a href="mailto:249405271@qq.com">249405271@qq.com</a><br>
+              <!-- Skype: <a href="skype:metronic">metronic</a>-->
             </address>
           </div>
           <!-- END BOTTOM CONTACTS -->

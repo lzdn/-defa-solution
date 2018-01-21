@@ -20,6 +20,25 @@
           <li class="list-group-item clearfix dropdown active">
           	<a href="#"><i class="fa fa-angle-right"></i> 新菜系列</a>
           	<ul class="dropdown-menu" style="display:block;">
+              <li class="list-group-item dropdown clearfix active">
+                <a href="javascript:void(0);" class="collapsed"><i class="fa fa-angle-right"></i> 娃娃菜A </a>
+                  <ul class="dropdown-menu" style="display:block;">
+                    <li class="list-group-item dropdown clearfix">
+                      <a href="javascript:void(0);"><i class="fa fa-angle-right"></i> 娃娃菜 B</a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#"><i class="fa fa-angle-right"></i> 娃娃菜 C</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i> 娃娃菜 D</a></li>
+                      </ul>
+                    </li>
+                    <li class="list-group-item dropdown clearfix active">
+                      <a href="javascript:void(0);" class="collapsed"><i class="fa fa-angle-right"></i> 娃娃菜E  </a>
+                      <ul class="dropdown-menu" style="display:block;">
+                        <li class="active"><a href="#"><i class="fa fa-angle-right"></i> 娃娃菜F</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i> 娃娃菜 G</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+              </li>
               <li><a href="#"><i class="fa fa-angle-right"></i> 娃娃菜H</a></li>
               <li><a href="#"><i class="fa fa-angle-right"></i> 娃娃菜J</a></li>
               <li><a href="#"><i class="fa fa-angle-right"></i> 娃娃菜K</a></li>
@@ -40,18 +59,17 @@
         </ul>
         <div class="sidebar-filter margin-bottom-25">
           <h2>搜索过滤</h2>
-          <h3>条件</h3>
+          <h3>Availability</h3>
           <div class="checkbox-list">
-            <label><input type="radio" name="filter" value="hot">&nbsp;&nbsp;热门</label>
-            <label><input type="radio" name="filter" value="new">&nbsp;&nbsp;新菜</label>
+            <label><input type="checkbox"> Not Available (3)</label>
+            <label><input type="checkbox"> In Stock (26)</label>
           </div>
-         <!--  <h3>价格</h3>
+          <h3>Price</h3>
           <p>
             <label for="amount">Range:</label>
             <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
           </p>
           <div id="slider-range"></div>
-          -->
         </div>
         <div class="sidebar-products clearfix">
           <h2>相关产品</h2>
@@ -83,7 +101,7 @@
             <div class="col-md-6">
               <form action="#">
                 <div class="input-group">
-                  <input type="text" placeholder="请输入产品名称" class="form-control">
+                  <input type="text" placeholder="请输入" class="form-control">
                   <span class="input-group-btn">
                     <button class="btn btn-primary" type="submit">搜索一下</button>
                   </span>
@@ -112,7 +130,6 @@
               <label class="control-label">排序:</label>
               <select class="form-control input-sm">
                 <option value="#?sort=p.sort_order&amp;order=ASC" selected="selected">Default</option>
-               <!-- 
                 <option value="#?sort=pd.name&amp;order=ASC">Name (A - Z)</option>
                 <option value="#?sort=pd.name&amp;order=DESC">Name (Z - A)</option>
                 <option value="#?sort=p.price&amp;order=ASC">Price (Low &gt; High)</option>
@@ -121,7 +138,6 @@
                 <option value="#?sort=rating&amp;order=ASC">Rating (Lowest)</option>
                 <option value="#?sort=p.model&amp;order=ASC">Model (A - Z)</option>
                 <option value="#?sort=p.model&amp;order=DESC">Model (Z - A)</option>
-                 -->
               </select>
             </div>
           </div>
